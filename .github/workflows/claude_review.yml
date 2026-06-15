@@ -6,7 +6,7 @@ on:
 
 jobs:
   code-review:
-      uses: step-security/reusable-workflows/.github/workflows/claude_review.yml@v1
+      uses: step-security/reusable-workflows/.github/workflows/claude_review.yml@feat/update-review-process
       secrets:
         anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
       
@@ -16,3 +16,4 @@ permissions:
   packages: read
   issues: write
   id-token: write
+  
