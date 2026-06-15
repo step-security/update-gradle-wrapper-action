@@ -69284,7 +69284,7 @@ class GitHubApi {
 }
 
 ;// CONCATENATED MODULE: ./lib/messages.js
-const ISSUES_URL = 'https://github.com/gradle-update/update-gradle-wrapper-action/issues';
+const ISSUES_URL = 'https://github.com/step-security/update-gradle-wrapper-action/issues';
 const TARGET_VERSION_PLACEHOLDER = '%targetVersion%';
 const SOURCE_VERSION_PLACEHOLDER = '%sourceVersion%';
 function replaceVersionPlaceholders(template, sourceVersion, targetVersion) {
@@ -69311,7 +69311,7 @@ Read the release notes: https://docs.gradle.org/${targetVersion}/release-notes.h
     bodyChecksum += `- Wrapper JAR Checksum: \`${targetRelease.wrapperChecksum}\`
 
 You can find the reference checksum values at https://gradle.org/release-checksums/`;
-    const bodyFooter = `🤖 This PR has been created by the [Update Gradle Wrapper](https://github.com/gradle-update/update-gradle-wrapper-action) action.
+    const bodyFooter = `🤖 This PR has been created by the [Update Gradle Wrapper](https://github.com/step-security/update-gradle-wrapper-action) action.
 
 <details>
 <summary>Need help? 🤔</summary>
@@ -80486,8 +80486,8 @@ class PostAction {
 
 ${usernames}
 
-Please refer to the documentation for the [\`reviewers\`](https://github.com/gradle-update/update-gradle-wrapper-action#reviewers) \
-and [\`team-reviewers\`](https://github.com/gradle-update/update-gradle-wrapper-action#team-reviewers) input parameters.
+Please refer to the documentation for the [\`reviewers\`](https://github.com/step-security/update-gradle-wrapper-action#reviewers) \
+and [\`team-reviewers\`](https://github.com/step-security/update-gradle-wrapper-action#team-reviewers) input parameters.
 
 ---
 

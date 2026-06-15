@@ -1,4 +1,5 @@
 // Copyright 2020-2021 Cristian Greco
+// Copyright (c) 2026 StepSecurity
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,7 +16,7 @@
 import type {Release} from './releases.js';
 
 const ISSUES_URL =
-  'https://github.com/gradle-update/update-gradle-wrapper-action/issues';
+  'https://github.com/step-security/update-gradle-wrapper-action/issues';
 
 const TARGET_VERSION_PLACEHOLDER = '%targetVersion%';
 const SOURCE_VERSION_PLACEHOLDER = '%sourceVersion%';
@@ -63,7 +64,7 @@ Read the release notes: https://docs.gradle.org/${targetVersion}/release-notes.h
 
 You can find the reference checksum values at https://gradle.org/release-checksums/`;
 
-  const bodyFooter = `🤖 This PR has been created by the [Update Gradle Wrapper](https://github.com/gradle-update/update-gradle-wrapper-action) action.
+  const bodyFooter = `🤖 This PR has been created by the [Update Gradle Wrapper](https://github.com/step-security/update-gradle-wrapper-action) action.
 
 <details>
 <summary>Need help? 🤔</summary>

@@ -1,4 +1,5 @@
 // Copyright 2020-2021 Cristian Greco
+// Copyright (c) 2026 StepSecurity
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -92,13 +93,13 @@ You can find the reference checksum values at https://gradle.org/release-checksu
 
 ---
 
-🤖 This PR has been created by the [Update Gradle Wrapper](https://github.com/gradle-update/update-gradle-wrapper-action) action.
+🤖 This PR has been created by the [Update Gradle Wrapper](https://github.com/step-security/update-gradle-wrapper-action) action.
 
 <details>
 <summary>Need help? 🤔</summary>
 <br />
 
-If something doesn't look right with this PR please file an issue [here](https://github.com/gradle-update/update-gradle-wrapper-action/issues).
+If something doesn't look right with this PR please file an issue [here](https://github.com/step-security/update-gradle-wrapper-action/issues).
 </details>`);
   });
 
@@ -129,13 +130,13 @@ You can find the reference checksum values at https://gradle.org/release-checksu
 
 ---
 
-🤖 This PR has been created by the [Update Gradle Wrapper](https://github.com/gradle-update/update-gradle-wrapper-action) action.
+🤖 This PR has been created by the [Update Gradle Wrapper](https://github.com/step-security/update-gradle-wrapper-action) action.
 
 <details>
 <summary>Need help? 🤔</summary>
 <br />
 
-If something doesn't look right with this PR please file an issue [here](https://github.com/gradle-update/update-gradle-wrapper-action/issues).
+If something doesn't look right with this PR please file an issue [here](https://github.com/step-security/update-gradle-wrapper-action/issues).
 </details>`);
     });
   });
@@ -169,13 +170,13 @@ You can find the reference checksum values at https://gradle.org/release-checksu
 
 ---
 
-🤖 This PR has been created by the [Update Gradle Wrapper](https://github.com/gradle-update/update-gradle-wrapper-action) action.
+🤖 This PR has been created by the [Update Gradle Wrapper](https://github.com/step-security/update-gradle-wrapper-action) action.
 
 <details>
 <summary>Need help? 🤔</summary>
 <br />
 
-If something doesn't look right with this PR please file an issue [here](https://github.com/gradle-update/update-gradle-wrapper-action/issues).
+If something doesn't look right with this PR please file an issue [here](https://github.com/step-security/update-gradle-wrapper-action/issues).
 </details>`);
     });
   });
@@ -209,13 +210,13 @@ You can find the reference checksum values at https://gradle.org/release-checksu
 
 ---
 
-🤖 This PR has been created by the [Update Gradle Wrapper](https://github.com/gradle-update/update-gradle-wrapper-action) action.
+🤖 This PR has been created by the [Update Gradle Wrapper](https://github.com/step-security/update-gradle-wrapper-action) action.
 
 <details>
 <summary>Need help? 🤔</summary>
 <br />
 
-If something doesn't look right with this PR please file an issue [here](https://github.com/gradle-update/update-gradle-wrapper-action/issues).
+If something doesn't look right with this PR please file an issue [here](https://github.com/step-security/update-gradle-wrapper-action/issues).
 </details>`);
     });
   });

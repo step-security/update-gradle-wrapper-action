@@ -1,4 +1,5 @@
 // Copyright 2020-2021 Cristian Greco
+// Copyright (c) 2026 StepSecurity
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -62,8 +63,8 @@ export class PostAction {
 
 ${usernames}
 
-Please refer to the documentation for the [\`reviewers\`](https://github.com/gradle-update/update-gradle-wrapper-action#reviewers) \
-and [\`team-reviewers\`](https://github.com/gradle-update/update-gradle-wrapper-action#team-reviewers) input parameters.
+Please refer to the documentation for the [\`reviewers\`](https://github.com/step-security/update-gradle-wrapper-action#reviewers) \
+and [\`team-reviewers\`](https://github.com/step-security/update-gradle-wrapper-action#team-reviewers) input parameters.
 
 ---
 
