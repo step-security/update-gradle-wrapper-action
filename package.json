@@ -15,7 +15,7 @@
     "lint": "eslint . --fix",
     "lint-check": "eslint .",
     "build": "tsc",
-    "pack": "ncc build",
+    "pack": "npm run build && ncc build",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "all": "npm ls && npm run clean && npm run format && npm run lint && npm run build && npm run test && npm run pack"
   },
