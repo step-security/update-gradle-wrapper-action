@@ -1,0 +1,187 @@
+// Copyright 2020-2021 Cristian Greco
+// Copyright (c) 2026 StepSecurity
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+import {jest} from '@jest/globals';
+
+import {coreMock} from '../mocks/core';
+
+jest.unstable_mockModule('@actions/core', coreMock);
+
+jest.unstable_mockModule('../../src/cmd', () => ({
+  execWithOutput: jest.fn()
+}));
+
+const cmd = await import('../../src/cmd');
+const git = await import('../../src/git/git-cmds');
+
+describe('gitDiffNameOnly', () => {
+  describe('when no files has been modified', () => {
+    it('execs "git diff" and returns empty array', async () => {
+      jest.mocked(cmd.execWithOutput).mockResolvedValue({
+        exitCode: 0,
+        stdout: '',
+        stderr: ''
+      });
+
+      const files = await git.gitDiffNameOnly();
+
+      expect(cmd.execWithOutput).toHaveBeenCalledWith('git', [
+        'diff',
+        '--name-only'
+      ]);
+
+      expect(files).toEqual([]);
+    });
+  });
+
+  describe('when some files have been modified', () => {
+    it('execs "git diff" and returns the file names', async () => {
+      jest.mocked(cmd.execWithOutput).mockResolvedValue({
+        exitCode: 0,
+        stdout: 'path/to/file.txt\ncode.js\n',
+        stderr: ''
+      });
+
+      const files = await git.gitDiffNameOnly();
+
+      expect(cmd.execWithOutput).toHaveBeenCalledWith('git', [
+        'diff',
+        '--name-only'
+      ]);
+
+      expect(files).toEqual(['path/to/file.txt', 'code.js']);
+    });
+  });
+});
+
+describe('parseHead', () => {
+  it('execs "git rev-parse" for current HEAD', async () => {
+    jest
+      .mocked(cmd.execWithOutput)
+      .mockResolvedValue({exitCode: 0, stdout: 'abc123', stderr: ''});
+
+    const headSha = await git.parseHead();
+
+    expect(cmd.execWithOutput).toHaveBeenCalledWith('git', [
+      'rev-parse',
+      'HEAD'
+    ]);
+    expect(headSha).toEqual('abc123');
+  });
+});
+
+describe('fetch', () => {
+  it('execs "git fetch" with with depth option', async () => {
+    await git.fetch();
+
+    expect(cmd.execWithOutput).toHaveBeenCalledWith('git', [
+      'fetch',
+      '--depth=1'
+    ]);
+  });
+});
+
+describe('checkout', () => {
+  it('execs "git checkout" with the given branch name and returns exit code', async () => {
+    jest
+      .mocked(cmd.execWithOutput)
+      .mockResolvedValue({exitCode: 0, stdout: '', stderr: ''});
+
+    const exitCode = await git.checkout('main-branch');
+
+    expect(cmd.execWithOutput).toHaveBeenCalledWith('git', [
+      'checkout',
+      'main-branch'
+    ]);
+    expect(exitCode).toEqual(0);
+  });
+});
+
+describe('checkoutCreateBranch', () => {
+  it('execs "git checkout -b" with the given branch name and start point', async () => {
+    await git.checkoutCreateBranch('main-branch', 'head-ref');
+
+    expect(cmd.execWithOutput).toHaveBeenCalledWith('git', [
+      'checkout',
+      '-b',
+      'main-branch',
+      'head-ref'
+    ]);
+  });
+});
+
+describe('add', () => {
+  it('execs "git add" with the given paths', async () => {
+    await git.add(['path/to/file.txt', '../folder/another/data.csv']);
+
+    expect(cmd.execWithOutput).toHaveBeenCalledWith('git', [
+      'add',
+      'path/to/file.txt',
+      '../folder/another/data.csv'
+    ]);
+  });
+});
+
+describe('commit', () => {
+  it('execs "git commit" with the given message body', async () => {
+    await git.commit('this is a commit message');
+
+    expect(cmd.execWithOutput).toHaveBeenCalledWith('git', [
+      'commit',
+      '-m',
+      'this is a commit message',
+      '--signoff'
+    ]);
+  });
+});
+
+describe('config', () => {
+  it('execs "git config" to set local configuration for key and value', async () => {
+    await git.config('key', 'value');
+
+    expect(cmd.execWithOutput).toHaveBeenCalledWith('git', [
+      'config',
+      '--local',
+      'key',
+      'value'
+    ]);
+  });
+});
+
+describe('unsetConfig', () => {
+  it('execs "git config" to unset local configuration for key', async () => {
+    await git.unsetConfig('key');
+
+    expect(cmd.execWithOutput).toHaveBeenCalledWith('git', [
+      'config',
+      '--local',
+      '--unset-all',
+      'key'
+    ]);
+  });
+});
+
+describe('push', () => {
+  it('execs "git push" to origin and head of the specified branch', async () => {
+    await git.push('my-feature-branch');
+
+    expect(cmd.execWithOutput).toHaveBeenCalledWith('git', [
+      'push',
+      '--force-with-lease',
+      'origin',
+      'HEAD:refs/heads/my-feature-branch'
+    ]);
+  });
+});
