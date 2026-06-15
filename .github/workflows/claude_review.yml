@@ -16,4 +16,4 @@ permissions:
   packages: read
   issues: write
   id-token: write
-  
+  checks: write
