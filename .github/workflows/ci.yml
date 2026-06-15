@@ -36,3 +36,4 @@ jobs:
             git status --porcelain dist/
             git diff dist/
             exit 1
+          fi
