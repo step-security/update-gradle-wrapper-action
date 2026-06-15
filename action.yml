@@ -1,0 +1,86 @@
+name: 'Update Gradle Wrapper Action'
+description: 'Keeps Gradle Wrapper script in your projects up-to-date'
+author: 'step-security'
+
+branding:
+  icon: chevrons-up
+  color: gray-dark
+
+inputs:
+  repo-token:
+    description: 'Access token for the repository, e.g. `{{ secrets.GITHUB_TOKEN }}`.'
+    required: false
+    default: ${{ github.token }}
+  reviewers:
+    description: 'List of users to request a review from (comma or newline-separated).'
+    required: false
+    default: ''
+  team-reviewers:
+    description: 'List of teams to request a review from (comma or newline-separated).'
+    required: false
+    default: ''
+  labels:
+    description: 'List of labels to set on the Pull Request (comma or newline-separated).'
+    required: false
+    default: ''
+  base-branch:
+    description: 'Base branch where the action will run and update the Gradle Wrapper.'
+    required: false
+  target-branch:
+    description: 'Branch to create the Pull Request against.'
+    required: false
+  set-distribution-checksum:
+    description: 'Whether to set the `distributionSha256Sum` property in `gradle-wrapper.properties`.'
+    required: false
+    default: true
+  distributions-base-url:
+    description: 'Use a custom base url to download the distributions file.'
+    required: false
+    default: ''
+  paths:
+    description: 'List of paths where to search for Gradle Wrapper files (comma or newline-separated).'
+    required: false
+    default: ''
+  paths-ignore:
+    description: 'List of paths to be excluded when searching for Gradle Wrapper files (comma or newline-separated).'
+    required: false
+    default: ''
+  release-channel:
+    description: 'Gradle release channel to be used (either `stable` or `release-candidate`).'
+    required: false
+    default: stable
+  merge-method:
+    description: 'Which merge method to use for auto-merge (either `MERGE`, `REBASE`, or `SQUASH`).  If unset, auto-merge will not be enabled on opened PRs.'
+    required: false
+  pr-title-template:
+    description: |
+      Template used for PR title. Use %sourceVersion% and %targetVersion% to
+      refer to the source and target versions of the Gradle Wrapper.
+      There are cases in which the source version of the Gradle Wrapper can not
+      be determined successfully. In such cases, the string 'undefined' will be
+      used to replace the source version placeholder.
+    required: false
+    default: 'Update Gradle Wrapper from %sourceVersion% to %targetVersion%'
+  pr-message-template:
+    description: |
+      Template used for PR description. Use %sourceVersion% and %targetVersion%
+      to refer to the source and target versions of the Gradle Wrapper.
+      There are cases in which the source version of the Gradle Wrapper can not
+      be determined successfully. In such cases, the string 'undefined' will be
+      used to replace the source version placeholder.
+    required: false
+    default: ''
+  commit-message-template:
+    description: |
+      Template used for commit message. Use %sourceVersion% and %targetVersion%
+      to refer to the source and target versions of the Gradle Wrapper.
+      There are cases in which the source version of the Gradle Wrapper can not
+      be determined successfully. In such cases, the string 'undefined' will be
+      used to replace the source version placeholder.
+    required: false
+    default: 'Update Gradle Wrapper from %sourceVersion% to %targetVersion%'
+
+runs:
+  using: 'node24'
+  main: 'dist/index.js'
+  post: 'dist/index.js'
